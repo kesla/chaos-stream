@@ -1,11 +1,12 @@
 var PassThrough = require('stream').PassThrough
 
   , test = require('tape')
-  , wrap = require('./chaos')
+  , chaos = require('./chaos')
 
 test('wrapped stream should emit error', function (t) {
 
   var stream = new PassThrough()
+    , wrap = chaos()
 
   wrap(stream)
 
@@ -17,6 +18,7 @@ test('wrapped stream should emit error', function (t) {
 
 test('finished stream should not emit error', function (t) {
   var stream = new PassThrough()
+    , wrap = chaos()
     , timeout = setTimeout(function () {
         t.pass('no error has been emitted')
         t.end()
@@ -35,6 +37,7 @@ test('finished stream should not emit error', function (t) {
 
 test('ended stream should not emit error', function (t) {
   var stream = new PassThrough()
+    , wrap = chaos()
     , timeout = setTimeout(function () {
         t.pass('no error has been emitted')
         t.end()
