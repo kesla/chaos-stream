@@ -15,9 +15,7 @@
   "devDependencies": {
     "tape": "^2.13.1"
   },
-  "dependencies": {
-    "tape": "~2.13.1"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/kesla/chaos-stream.git"
