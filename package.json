@@ -1,0 +1,29 @@
+{
+  "name": "chaos-stream",
+  "version": "0.0.0",
+  "description": "Make a chaotic stream, one that will error and stuff randomly from time to time",
+  "main": "chaos.js",
+  "scripts": {
+    "test": "tape test"
+  },
+  "keywords": [
+    "chaos",
+    "stream"
+  ],
+  "author": "David Björklund <david.bjorklund@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^2.13.1"
+  },
+  "dependencies": {
+    "tape": "~2.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kesla/chaos-stream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kesla/chaos-stream/issues"
+  },
+  "homepage": "https://github.com/kesla/chaos-stream"
+}
