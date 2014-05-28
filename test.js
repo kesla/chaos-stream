@@ -16,7 +16,7 @@ test('wrapped stream should emit error', function (t) {
   })
 })
 
-test('finished stream should not emit error', function (t) {
+test('closed stream should not emit error', function (t) {
   var stream = new PassThrough()
     , wrap = chaos()
     , timeout = setTimeout(function () {
@@ -27,12 +27,12 @@ test('finished stream should not emit error', function (t) {
   wrap(stream)
 
   stream.once('error', function (err) {
-    t.fail('error should not be emitted on a finished stream')
+    t.fail('error should not be emitted on a closed stream')
     t.end()
     clearTimeout(timeout)
   })
 
-  stream.emit('finish')
+  stream.emit('close')
 })
 
 test('ended stream should not emit error', function (t) {

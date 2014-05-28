@@ -4,12 +4,17 @@ var wrap = function (opts) {
                   stream.emit('error', new Error('This is chaos'))
                 }, 50)
               , cleanup = function () {
+                  stream.removeListener('close', cleanup)
+                  stream.removeListener('end', cleanup)
+                  stream.removeListener('error', cleanup)
+                  stream.removeListener('finish', cleanup)
+
                   clearTimeout(timeout)
                 }
 
+            stream.once('close', cleanup)
             stream.once('end', cleanup)
             stream.once('error', cleanup)
-            stream.once('finish', cleanup)
           }
     }
 
