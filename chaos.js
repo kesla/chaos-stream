@@ -7,7 +7,6 @@ var wrap = function (opts) {
                   stream.removeListener('close', cleanup)
                   stream.removeListener('end', cleanup)
                   stream.removeListener('error', cleanup)
-                  stream.removeListener('finish', cleanup)
 
                   clearTimeout(timeout)
                 }
