@@ -53,3 +53,17 @@ test('ended stream should not emit error', function (t) {
 
   stream.emit('end')
 })
+
+test('errored stream should not emit chaos-error', function (t) {
+  var stream = new PassThrough()
+    , wrap = chaos()
+
+  wrap(stream)
+
+  stream.on('error', function (err) {
+    t.equal(err.message, 'beep boop')
+    t.end()
+  })
+
+  stream.emit('error', new Error('beep boop'))
+})
