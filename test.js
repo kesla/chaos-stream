@@ -4,6 +4,7 @@ var PassThrough = require('stream').PassThrough
   , chaos = require('./chaos')
 
 test('wrapped stream should emit error', function (t) {
+  t.plan(1)
 
   var stream = new PassThrough()
     , wrap = chaos()
@@ -12,23 +13,22 @@ test('wrapped stream should emit error', function (t) {
 
   stream.once('error', function (err) {
     t.pass('should emit error')
-    t.end()
   })
 })
 
 test('closed stream should not emit error', function (t) {
+  t.plan(1)
+
   var stream = new PassThrough()
     , wrap = chaos()
     , timeout = setTimeout(function () {
         t.pass('no error has been emitted')
-        t.end()
       }, 60)
 
   wrap(stream)
 
   stream.once('error', function (err) {
     t.fail('error should not be emitted on a closed stream')
-    t.end()
     clearTimeout(timeout)
   })
 
@@ -36,18 +36,18 @@ test('closed stream should not emit error', function (t) {
 })
 
 test('ended stream should not emit error', function (t) {
+  t.plan(1)
+
   var stream = new PassThrough()
     , wrap = chaos()
     , timeout = setTimeout(function () {
         t.pass('no error has been emitted')
-        t.end()
       }, 60)
 
   wrap(stream)
 
   stream.once('error', function (err) {
     t.fail('error should not be emitted on a ended stream')
-    t.end()
     clearTimeout(timeout)
   })
 
