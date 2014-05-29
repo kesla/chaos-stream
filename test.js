@@ -67,3 +67,29 @@ test('errored stream should not emit chaos-error', function (t) {
 
   stream.emit('error', new Error('beep boop'))
 })
+
+test('make is possible to add function to decide if it should error', function (t) {
+  t.plan(2)
+
+  var count = 0
+    , stream1 = new PassThrough()
+    , stream2 = new PassThrough()
+    , stream3 = new PassThrough()
+    , stream4 = new PassThrough()
+    , wrap = chaos(function () {
+        count++
+        return count > 2
+      })
+
+  wrap(stream1)
+  wrap(stream2)
+  wrap(stream3)
+  wrap(stream4)
+
+  stream3.on('error', function () {
+    t.pass('third stream should error')
+  })
+  stream4.on('error', function () {
+    t.pass('fourth stream should error')
+  })
+})
