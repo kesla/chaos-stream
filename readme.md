@@ -30,7 +30,7 @@ var PassThrough = require('stream').PassThrough
   , chaosCounter = 0
   , eventuallyChaos = createChaos(function () {
       chaosCounter = chaosCounter + 1
-      if (chaosCounter === 1)
+      if (chaosCounter === 2)
         return true
     })
 
@@ -64,7 +64,8 @@ eventuallyChaos(stream3)
 ```
 stream1 will always error
 err [Error: This is chaos]
-Well, this should not be called
+This should always be called
+err [Error: This is chaos]
 ```
 
 ## Licence

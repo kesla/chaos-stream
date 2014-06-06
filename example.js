@@ -7,7 +7,7 @@ var PassThrough = require('stream').PassThrough
   , chaosCounter = 0
   , eventuallyChaos = createChaos(function () {
       chaosCounter = chaosCounter + 1
-      if (chaosCounter === 1)
+      if (chaosCounter === 2)
         return true
     })
 
